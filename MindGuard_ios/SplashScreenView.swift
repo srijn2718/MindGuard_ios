@@ -1,32 +1,21 @@
-//
-//  SplashScreenView.swift
-//  MindGuard_ios
-//
-//  Created by Chitrap Srivastava on 07/11/24.
-//
-
-
 import SwiftUI
 
 struct SplashScreenView: View {
     @State private var isActive = false
-    var body: some View {
-        ZStack {
-            // Background color
-            Image("HOME") // Use the name of the image in your assets
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .edgesIgnoringSafeArea(.all)
-                
 
-            VStack {
-                Spacer()
+    var body: some View {
+        if isActive {
+            LoginView() // Redirect to LoginView
+        } else {
+            ZStack {
+                Image("HOME")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .edgesIgnoringSafeArea(.all)
                 
-                Spacer()
-                
-                // Creator names
                 VStack {
+                    Spacer()
                     Text("Created by:")
                         .font(.subheadline)
                         .foregroundColor(.white)
@@ -34,23 +23,17 @@ struct SplashScreenView: View {
                         .font(.subheadline)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
+                        .padding(.bottom, 30)
                 }
-                .padding(.bottom, 30)
+                .padding()
             }
-            .padding()
-        }
-        .ignoresSafeArea() // Make it full screen
-        .onAppear {
-            // Start a 3-second timer
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                withAnimation {
-                    self.isActive = true
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    withAnimation {
+                        self.isActive = true
+                    }
                 }
             }
         }
     }
-}
-
-#Preview {
-    SplashScreenView()
 }

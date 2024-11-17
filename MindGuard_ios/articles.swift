@@ -13,17 +13,16 @@ struct WHOArticleScreen: View {
         Article(title: "Child Mental Health", description: "Understanding and supporting children's mental health.", url: "https://www.who.int/news-room/fact-sheets/detail/mental-health"),
         // Add more articles as needed
     ]
+    
     var body: some View {
         NavigationView {
-            ZStack
-            {
+            ZStack {
+                // Background Image
                 Image("BG")
                     .resizable()
-                                    .scaledToFill()
-                                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                                    .clipped()
-                                    .edgesIgnoringSafeArea(.all)
-            
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
+                
                 ScrollView {
                     VStack(spacing: 20) {
                         ForEach(articles) { article in
@@ -36,9 +35,9 @@ struct WHOArticleScreen: View {
                     }
                     .padding(.vertical)
                 }
+            }
             
         }
-            .navigationTitle("WHO Articles")        }
     }
     
     private func openURL(_ urlString: String) {
@@ -60,7 +59,7 @@ struct ArticleCardView: View {
             Text(article.description)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
-                .lineLimit(3) // Trims descriptions that are too long
+                .lineLimit(3) // Trims long descriptions
             
             HStack {
                 Spacer()

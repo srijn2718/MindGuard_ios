@@ -1,17 +1,17 @@
-//
-//  MindGuard_iosApp.swift
-//  MindGuard_ios
-//
-//  Created by Chitrap Srivastava on 07/11/24.
-//
-
 import SwiftUI
+import Firebase
 
 @main
 struct MindGuard_iosApp: App {
+    init() {
+        // Initialize Firebase
+        FirebaseApp.configure()
+    }
+
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            // Start with the SplashScreenView
+            SplashScreenView()
         }
     }
 }

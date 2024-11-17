@@ -10,21 +10,32 @@ struct HomeView: View {
                     .aspectRatio(contentMode: .fit)
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.all) // Makes the background cover the entire screen
-                    
-                
+
                 VStack {
                     // Menu Buttons
-                    MenuButton(title: "COMMUNITY")
-                    NavigationLink(destination: BackgroundImageScreen()){
-                        MenuButton(title: "ABOUT US")}
-                    MenuButton(title: "ARTICLES")
+                    NavigationLink(destination: CommunityView()){
+                        MenuButton(title: "COMMUNITY")
+                    }
+                    NavigationLink(destination: BackgroundImageScreen()) {
+                        MenuButton(title: "ABOUT US")
+                    }
+                    NavigationLink(destination: WHOArticleScreen()){
+                        MenuButton(title: "ARTICLES")
+                    }
                     
                     NavigationLink(destination: DASS21QuestionnaireView()) {
                         MenuButton(title: "DASS-21")
                     }
                     
                     MenuButton(title: "Doctors Nearby")
-                    MenuButton(title: "Emergency Contacts")
+                    NavigationLink(destination: EmergencyContactsView()){
+                        MenuButton(title: "Emergency Contacts")
+                    }
+                    
+                    // Profile Button
+                    NavigationLink(destination: ProfileView()) {
+                        MenuButton(title: "Profile")
+                    }
                 }
                 .padding(.horizontal, 20)
                 .padding(.top, 50)
